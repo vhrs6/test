@@ -39,7 +39,7 @@ def page1():
     if "selected_llm" not in st.session_state:
         st.session_state.selected_llm = "Groq"
     if "selected_embeddings" not in st.session_state:
-        st.session_state.selected_embeddings = "huggingface"
+        st.session_state.selected_embeddings = "Huggingface"
 
     # Cleanup function
     # Sidebar for LLM and embeddings selection
@@ -60,10 +60,16 @@ def page1():
             ["Huggingface", "Gemini","OpenAI"],
             key="embeddings_selector"
         )
+        embedding_api_key = st.text_input(
+            f"Enter {selected_llm} API Key",
+            type="password",
+            key="embedding_key_input"
+        )
         if api_key:
             st.session_state.llm_api_key = api_key
             st.session_state.selected_llm = selected_llm
             st.session_state.selected_embeddings = selected_embeddings
+            st.session_state.embedding_api_key = embedding_api_key
 
     def cleanup():
         """
@@ -143,7 +149,7 @@ def page1():
                     st.session_state.vectorstore = convert_csv_to_vector_db(
                         st.session_state.temp_csv_path,
                         embeddings_provider=st.session_state.selected_embeddings,
-                        api_key=st.session_state.llm_api_key,
+                        api_key=st.session_state.embedding_api_key,
                         progress_bar=progress_bar_load,
                         progress_text=progress_text_load
                     )

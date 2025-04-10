@@ -15,6 +15,8 @@ def how_to_use_page():
     
     # Page 1 Guide
     st.header("1️⃣ Result Fetcher & Chatbot")
+    st.caption("WORKS ONLY WHEN THE RESULT SERVER IS ACTIVE IN THE COLLEGE NETWORK")
+
     st.markdown("""
     #### Getting Started
     1. Enter the year (e.g., 22 for 2022)

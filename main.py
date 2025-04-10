@@ -82,6 +82,8 @@ def page1():
     # Streamlit App
     # st.set_page_config(page_title="DSCE Exam Result Fetcher & Chatbot", layout="wide")
     st.title("DSCE Exam Result Fetcher & Chatbot")
+    st.caption("WORKS ONLY WHEN THE RESULT SERVER IS ACTIVE IN THE COLLEGE NETWORK")
+
 
     # User Inputs
     year = st.number_input("Enter Year (e.g., 22 for 2022)", min_value=10, max_value=99, value=22, step=1)
